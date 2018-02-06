@@ -5,11 +5,6 @@ class Solution(object):
         :type p: str
         :rtype: bool
         """
-        def printlist(lst):
-            accum = "placeholder"
-            for x in lst:
-                accum = accum + ", " + x
-            print accum
         
         def areStars(lst):
             for x in lst:
@@ -36,32 +31,24 @@ class Solution(object):
                     else:
                         matchables.append(p[counter])
                         counter += 1  
-            print("matchables are ")
-            printlist(matchables)
             return matchables
         
         matchables = getMatchables(p)
         
         def isMatching(s, potentials):
             if (s == "" and areStars(potentials)):
-                print("return true1")
                 return True
             elif (s == ""):
                 if potentials == []:
-                    print("return true2")
                     return True
                 else:
                     printlist(potentials)
-                    print("return false1")
                     return False
             elif potentials == []:
                 print(s)
                 printlist(potentials)
-                print("return false2")
                 return False
             elif len(potentials[0]) == 2:
-                print("s is " + s)
-                print("s0 is " + s[0])
                 if (potentials[0])[:1] == s[0] or (potentials[0])[:1] == ".":
                     return isMatching(s[1:], potentials)
                 else:
@@ -72,7 +59,6 @@ class Solution(object):
                 if s[0] == potentials[0]:
                     return isMatching(s[1:], potentials[1:])
                 else:
-                    print("return false3")
                     return False
             
         return isMatching(s, matchables)
